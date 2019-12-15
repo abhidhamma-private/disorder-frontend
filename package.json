@@ -1,0 +1,52 @@
+{
+  "name": "disorder",
+  "homepage": "https://abhidhamma.github.io/disorder",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "antd": "^4.0.0-alpha.0",
+    "apollo-boost": "^0.4.4",
+    "docker-compose": "^0.23.1",
+    "dotenv": "^8.2.0",
+    "gh-pages": "^2.1.1",
+    "graphql": "^14.5.8",
+    "moment": "^2.24.0",
+    "react": "^16.12.0",
+    "react-apollo-hooks": "^0.5.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.3.0",
+    "react-textarea-autosize": "^7.1.2",
+    "react-toastify": "^5.4.1",
+    "rl-react-helmet": "^5.2.0",
+    "styled-components": "^4.4.1",
+    "styled-reset": "^4.0.8"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "gh-pages-clean",
+    "deploy": "gh-pages -d build   -r \"https://${GITHUB_TOKEN}@github.com/abhidhamma/disorder\""
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

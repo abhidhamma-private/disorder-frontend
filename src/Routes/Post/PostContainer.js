@@ -65,7 +65,7 @@ const PostContainer = ({
       }
     }
   };
-
+  console.log(comments);
   return (
     <PostPresenter
       user={user}

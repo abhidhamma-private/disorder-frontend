@@ -58,7 +58,7 @@ export default ({ action, userName, setAction, onSubmit, secret }) => (
       {action === 'signUp' && (
         <form onSubmit={onSubmit}>
           <Input placeholder={'닉네임'} {...userName} />
-          <Button text={'회원가입'} />
+          <Button text={'입장하기^-^//'} />
         </form>
       )}
       {action === 'confirm' && (

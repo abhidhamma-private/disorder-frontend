@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 import { HeartFull, HeartEmpty } from '../../Components/Icons';
+import FatText from '../../Components/FatText';
+import TextareaAutosize from 'react-autosize-textarea';
 //import TextareaAutosize from 'react-autosize-textarea';
 
 const Post = styled.div`
@@ -38,7 +40,7 @@ const Thumbnail = styled.img`
 const Contents = styled.div`
   position: relative;
   display: grid;
-  grid-template-rows: 3fr 2fr;
+  grid-template-rows: 2fr 3fr;
   grid-template-columns: 1fr;
   box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.05);
   padding: 1rem 1rem;
@@ -74,7 +76,12 @@ const Info = styled.div`
 `;
 const DateWrapper = styled.div``;
 
-const LikeCountWrapper = styled.div``;
+const LikeCountWrapper = styled.div`
+  display: grid;
+  align-self: center;
+  justify-self: end;
+  margin-right: 5px;
+`;
 
 const LikeWrapper = styled.div`
   cursor: pointer;
@@ -85,23 +92,65 @@ const Dot = styled.span`
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     font-weight: 900;
-    content: '·';
+    content: '';
   }
 `;
 const Content = styled.div`
+  display: grid;
+  grid-auto-columns: 1fr 4fr;
   -webkit-box-orient: vertical;
   text-align-last: center;
-  margin-top: 1.5rem;
+  margin-top: 0.07vh;
   line-height: 1.5rem;
-  height: 4.5rem;
+  height: 100%;
   overflow-y: hidden;
   word-break: break-all;
   color: #4c657d;
-  display: -webkit-box;
   -webkit-line-clamp: 3;
   overflow: hidden;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
+`;
+
+const Caption = styled.div`
+  border-bottom: 1px solid #e9ecef;
+`;
+
+const Comments = styled.div`
+  display: grid;
+  margin-top: 5px;
+  max-height: 12vh;
+  overflow-y: hidden;
+  word-break: break-all;
+  color: #4c657d;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+`;
+const Comment = styled.div`
+  margin-bottom: 5px;
+  span {
+    margin-right: 5px;
+  }
+  overflow-y: hidden;
+  word-break: break-all;
+  color: #4c657d;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+`;
+
+const Textarea = styled(TextareaAutosize)`
+  margin-top: 5px;
+  border: 1px solid #e9ecef;
+  width: 100%;
+  resize: none;
+  font-size: 14px;
+  &:focus {
+    outline: none;
+  }
 `;
 
 var Avatar = styled.div`
@@ -126,7 +175,13 @@ var Avatar = styled.div`
     border-radius: 50%;
   }
 `;
-
+const CommentInfo = styled.div`
+  display: grid;
+  align-self: start;
+  justify-self: start;
+  font-size: 15px;
+  font-weight: 700;
+`;
 export default ({
   files,
   user: { userName, avatar },
@@ -164,7 +219,7 @@ export default ({
             </DateWrapper>
             <Dot />
             <LikeCountWrapper>
-              {likeCount === 1 ? '1 ' : `${likeCount} `}개의 응원
+              {likeCount === 1 ? '1' : `${likeCount}`}개의 응원
             </LikeCountWrapper>
 
             <LikeWrapper onClick={toggleLike}>
@@ -172,7 +227,34 @@ export default ({
             </LikeWrapper>
           </Info>
         </CoverLetter>
-        <Content>{caption}</Content>
+        <Content>
+          <Caption>{caption}</Caption>
+          {comments.length !== 0 ? (
+            <Comments>
+              <CommentInfo>최근댓글</CommentInfo>
+              {comments.reverse().map(comment => (
+                <Comment key={comment.id}>
+                  <FatText text={comment.user.userName} />
+                  {comment.text}
+                </Comment>
+              ))}
+              {selfComments.reverse().map(comment => (
+                <Comment key={comment.id}>
+                  <FatText text={comment.user.userName} />
+                  {comment.text}
+                </Comment>
+              ))}
+            </Comments>
+          ) : (
+            <CommentInfo>최근댓글이 없어요 ^-^//</CommentInfo>
+          )}
+          <Textarea
+            onKeyPress={onKeyPress}
+            placeholder={'응원해주기'}
+            value={newComment.value}
+            onChange={newComment.onChange}
+          />
+        </Content>
       </Contents>
     </Post>
   </>

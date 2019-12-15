@@ -47,9 +47,7 @@ const PostList = styled.div`
 `;
 
 export default () => {
-  console.log('feed');
   const { data, loading } = useQuery(FEED_QUERY);
-  console.log(data);
   return (
     <PostList>
       <Helmet>
@@ -60,7 +58,6 @@ export default () => {
         data &&
         data.seeFeed &&
         data.seeFeed.reverse().map(post => {
-          console.log(post);
           return (
             <Post
               key={post.id}

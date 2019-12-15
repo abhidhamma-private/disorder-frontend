@@ -35,7 +35,6 @@ const Tab = styled(Link)`
 
 export default () => {
   function menuToggle(event) {
-    console.log('클릭');
     //1.각 tab에게 active 클래스를 없애준다.
     document
       .querySelectorAll('div > a')

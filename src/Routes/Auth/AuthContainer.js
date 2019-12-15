@@ -60,7 +60,6 @@ export default () => {
           } = await createAccountMutation();
           toast.success('계정이 만들어졌어요!', token);
 
-          console.log('token', token);
           if (token !== '' && token !== undefined) {
             localLogInMutation({ variables: { token } });
             setTimeout(() => document.location.reload(), 2000);
@@ -77,7 +76,6 @@ export default () => {
           const {
             data: { confirmSecret: token },
           } = await confirmSecretMutation();
-          console.log(token);
           if (token !== '' && token !== undefined) {
             localLogInMutation({ variables: { token } });
           } else {

@@ -17,7 +17,6 @@ const PostContainer = ({
   caption,
   title,
 }) => {
-  console.log('postcontainer');
   const [isLikedS, setIsLiked] = useState(isLiked);
   const [likeCountS, setLikeCount] = useState(likeCount);
   const [currentItem, setCurrentItem] = useState(0);

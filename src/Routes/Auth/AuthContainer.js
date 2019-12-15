@@ -63,9 +63,8 @@ export default () => {
           console.log('token', token);
           if (token !== '' && token !== undefined) {
             localLogInMutation({ variables: { token } });
+            setTimeout(() => document.location.reload(), 2000);
           }
-
-          setTimeout(2000);
         } catch (e) {
           toast.error(e.message);
         }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import useInput from '../../Hooks/useInput';
 import PostPresenter from './PostPresenter';
-import { useMutation } from 'react-apollo-hooks';
+import { useMutation } from '@apollo/react-hooks';
 import { TOGGLE_LIKE, ADD_COMMENT } from './PostQueries';
 import { toast } from 'react-toastify';
 
@@ -11,11 +11,11 @@ const PostContainer = ({
   user,
   files,
   likeCount,
-  isLiked,
   comments,
   createdAt,
   caption,
   title,
+  isLiked,
 }) => {
   const [isLikedS, setIsLiked] = useState(isLiked);
   const [likeCountS, setLikeCount] = useState(likeCount);
@@ -31,20 +31,24 @@ const PostContainer = ({
   useEffect(() => {
     const totalFiles = files.length;
     if (currentItem === totalFiles - 1) {
-      setTimeout(() => setCurrentItem(0), 3000);
+      setCurrentItem(0);
     } else {
-      setTimeout(() => setCurrentItem(currentItem + 1), 3000);
+      setCurrentItem(currentItem + 1);
     }
   }, [currentItem, files]);
 
   const toggleLike = () => {
-    toggleLikeMutation();
-    if (isLikedS === true) {
-      setIsLiked(false);
-      setLikeCount(likeCountS - 1);
-    } else {
-      setIsLiked(true);
-      setLikeCount(likeCountS + 1);
+    try {
+      toggleLikeMutation();
+      if (isLikedS === true) {
+        setIsLiked(false);
+        setLikeCount(likeCountS - 1);
+      } else {
+        setIsLiked(true);
+        setLikeCount(likeCountS + 1);
+      }
+    } catch (e) {
+      console.log(e);
     }
   };
 
@@ -64,22 +68,23 @@ const PostContainer = ({
       }
     }
   };
+
   return (
     <PostPresenter
+      isLiked={isLikedS}
       user={user}
       files={files}
+      onKeyPress={onKeyPress}
       likeCount={likeCountS}
       title={title}
       caption={caption}
-      isLiked={isLikedS}
-      comments={comments}
       createdAt={createdAt}
-      newComment={comment}
-      setIsLiked={setIsLiked}
-      setLikeCount={setLikeCount}
       currentItem={currentItem}
       toggleLike={toggleLike}
-      onKeyPress={onKeyPress}
+      newComment={comment}
+      comments={comments}
+      setIsLiked={setIsLiked}
+      setLikeCount={setLikeCount}
       selfComments={selfComments}
     />
   );

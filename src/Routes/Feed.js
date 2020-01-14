@@ -1,10 +1,14 @@
 import React from 'react';
-import { Helmet } from 'rl-react-helmet';
 import styled from 'styled-components';
 import { gql } from 'apollo-boost';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import Loader from '../Components/Loader';
 import Post from '../Routes/Post';
+import Tab from '../Components/Tab';
+import Write from '../Components/Write';
+import Header from '../Components/Header';
+import { useHistory } from 'react-router-dom';
+import { READ_MYDATA } from '../sharedQueries';
 
 const FEED_QUERY = gql`
   {
@@ -36,43 +40,61 @@ const FEED_QUERY = gql`
   }
 `;
 
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-rows: 7vh 7vh 8vh;
+`;
+
 const PostList = styled.div`
   display: grid;
   justify-content: center;
-  grid-gap: 10px;
+  grid-gap: 1px;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  background: rgb(241, 243, 245);
   text-align: center;
-  padding: 10px;
 `;
 
 export default () => {
+  let history = useHistory();
+  if (history.action === 'PUSH') {
+    // history.push('/feed');
+  }
+  const { data: readMyData, loading: myDataLoading } = useQuery(READ_MYDATA);
   const { data, loading } = useQuery(FEED_QUERY);
+
+  if (loading && myDataLoading) {
+    return <Loader />;
+  }
   return (
-    <PostList>
-      <Helmet>
-        <title>사람들</title>
-      </Helmet>
-      {loading && <Loader />}
-      {!loading &&
-        data &&
-        data.seeFeed &&
-        data.seeFeed.reverse().map(post => {
-          return (
-            <Post
-              key={post.id}
-              id={post.id}
-              title={post.title}
-              caption={post.caption}
-              user={post.user}
-              files={post.files}
-              likeCount={post.likeCount}
-              isLiked={post.isLiked}
-              comments={post.comments}
-              createdAt={post.createdAt}
-            />
-          );
-        })}
-    </PostList>
+    <>
+      {typeof readMyData.readMyData.avatar === 'undefined'
+        ? history.push('/theme')
+        : ''}
+      <Wrapper>
+        <Header />
+        <Tab />
+        <Write />
+        <PostList>
+          {!loading &&
+            data &&
+            data.seeFeed &&
+            data.seeFeed.map(post => {
+              return (
+                <Post
+                  key={post.id}
+                  id={post.id}
+                  title={post.title}
+                  caption={post.caption}
+                  user={post.user}
+                  files={post.files}
+                  likeCount={post.likeCount}
+                  isLiked={post.isLiked}
+                  comments={post.comments}
+                  createdAt={post.createdAt}
+                />
+              );
+            })}
+        </PostList>
+      </Wrapper>
+    </>
   );
 };

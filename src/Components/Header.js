@@ -1,24 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import mLogo from '../assets/image/MessengerRGB.svg';
-import sLogo from '../assets/image/Search.svg';
-
+import MassengerLogo from '../assets/image/MessengerRGB.svg';
+import SearchLogo from '../assets/image/Search.svg';
+import Brand from '../Components/Brand';
+import { Link } from 'react-router-dom';
 const Header = styled.div`
   display: grid;
   grid-template-columns: 3fr 3fr 1fr 1fr;
+  background: ${props => props.theme.whiteColor};
 `;
 
-const Logo = styled.div`
-  font-family: 'LOGO';
-  font-size: 8vw;
-  color: dimgray;
-  font-weight: 800;
-  align-self: center;
-  justify-self: start;
-  margin-left: 10px;
-`;
-
-const LogoWrapper = styled.div`
+const LogoWrapper = styled(Link)`
   display: grid;
   align-items: center;
 `;
@@ -39,7 +31,7 @@ const Massenger = styled.img`
   justify-self: center;
 `;
 
-const SMWrapper = styled.div`
+const SMWrapper = styled(Link)`
   width: 5vh;
   height: 5vh;
   display: grid;
@@ -51,15 +43,15 @@ const SMWrapper = styled.div`
 
 export default () => (
   <Header>
-    <LogoWrapper>
-      <Logo>DISORDER</Logo>
+    <LogoWrapper to="/feed">
+      <Brand />
     </LogoWrapper>
     <Empty />
-    <SMWrapper>
-      <Search src={sLogo} alt="" />
+    <SMWrapper to="/search">
+      <Search src={SearchLogo} alt="" />
     </SMWrapper>
-    <SMWrapper>
-      <Massenger src={mLogo} alt="" />
+    <SMWrapper to="/messenger">
+      <Massenger src={MassengerLogo} alt="" />
     </SMWrapper>
   </Header>
 );

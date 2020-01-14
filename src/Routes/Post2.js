@@ -55,7 +55,7 @@ const File = styled.div`
   transition: opacity 0.5s linear;
 `;
 
-const Button = styled.span`
+const OutLineButton = styled.span`
   cursor: pointer;
 `;
 
@@ -63,8 +63,8 @@ const Meta = styled.div`
   padding: 15px;
 `;
 
-const Buttons = styled.div`
-  ${Button} {
+const OutLineButtons = styled.div`
+  ${OutLineButton} {
     &:first-child {
       margin-right: 10px;
     }
@@ -140,14 +140,14 @@ export default ({
         ))}
     </Files>
     <Meta>
-      <Buttons>
-        <Button onClick={toggleLike}>
+      <OutLineButtons>
+        <OutLineButton onClick={toggleLike}>
           {isLiked ? <HeartFull /> : <HeartEmpty />}
-        </Button>
-        <Button>
+        </OutLineButton>
+        <OutLineButton>
           <CommentIcon />
-        </Button>
-      </Buttons>
+        </OutLineButton>
+      </OutLineButtons>
       <FatText text={likeCount === 1 ? '1 like' : `${likeCount} likes`} />
       <Caption>
         <FatText text={userName} /> {caption}

@@ -1,7 +1,3 @@
-export const defaults = {
-  isLoggedIn: Boolean(localStorage.getItem('token')) || false,
-};
-
 export const resolvers = {
   Mutation: {
     logUserIn: (_, { token }, { cache }) => {
@@ -20,3 +16,28 @@ export const resolvers = {
     },
   },
 };
+
+// export const logUserIn = {
+//   Mutation: {
+//     logUserIn: (_, { token }, { cache }) => {
+//       console.log('logUserIn');
+//       localStorage.setItem('token', token);
+//       cache.writeData({
+//         data: {
+//           isLoggedIn: true,
+//         },
+//       });
+//       return null;
+//     },
+//   },
+// };
+// export const logUserOut = {
+//   Mutation: {
+//     logUserOut: (_, __, { cache }) => {
+//       console.log('logUserOut');
+//       localStorage.removeItem('token');
+//       window.location = '/';
+//       return null;
+//     },
+//   },
+// };

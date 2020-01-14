@@ -4,20 +4,30 @@ import PropTypes from 'prop-types';
 
 const Container = styled.button`
   width: 100%;
+  height: 100%;
   border: 0;
   border-radius: ${props => props.theme.borderRadius};
-  color: white;
+  color: ${props => props.theme.whiteColor};
   font-weight: 600;
-  background-color: ${props => props.theme.blueColor};
+  background-color: ${props => props.theme.ActiveColor};
+  border: 1px solid ${props => props.theme.whiteColor};
   text-align: center;
   padding: 7px 0px;
-  font-size: 14px;
+  font-size: 1rem;
+  font-weight: 500;
 `;
+const Wrapper = styled.div`
+  width: 40vw;
+  height: 5vh;
+`;
+const OutLineButton = ({ text, onClick }) => (
+  <Wrapper>
+    <Container onClick={onClick}>{text}</Container>
+  </Wrapper>
+);
 
-const Button = ({ text }) => <Container>{text}</Container>;
-
-Button.propTypes = {
+OutLineButton.propTypes = {
   text: PropTypes.string.isRequired,
 };
 
-export default Button;
+export default OutLineButton;

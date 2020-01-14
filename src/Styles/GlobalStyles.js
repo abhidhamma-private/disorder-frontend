@@ -3,6 +3,7 @@ import reset from 'styled-reset';
 export default createGlobalStyle`
     ${reset};
     * {
+        font-family:"KakaoL";
         box-sizing:border-box;
         margin:0;
         padding:0;
@@ -10,7 +11,7 @@ export default createGlobalStyle`
     body {
         margin:0;
         background-color:${props => props.theme.bgColor};
-        color:${props => props.theme.blackColor};
+        color:${props => props.theme.fontColor};
         font-size:14px;
     }
     a {

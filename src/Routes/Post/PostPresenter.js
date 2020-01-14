@@ -4,16 +4,14 @@ import moment from 'moment';
 import { HeartFull, HeartEmpty } from '../../Components/Icons';
 import FatText from '../../Components/FatText';
 import TextareaAutosize from 'react-autosize-textarea';
-//import TextareaAutosize from 'react-autosize-textarea';
+import Avatar from '../../Components/Avatar';
 
 const Post = styled.div`
   display: grid;
   grid-template-rows: 11fr 9fr;
   grid-template-columns: 1fr;
-  border-radius: 15px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
   height: 80vh;
-  background: white;
+  background: ${props => props.theme.whiteColor};
 `;
 
 const ThumbnailWraper = styled.div`
@@ -103,9 +101,9 @@ const Content = styled.div`
   margin-top: 0.07vh;
   line-height: 1.5rem;
   height: 100%;
-  overflow-y: hidden;
   word-break: break-all;
   color: #4c657d;
+  overflow-y: hidden;
   -webkit-line-clamp: 3;
   overflow: hidden;
   -o-text-overflow: ellipsis;
@@ -153,7 +151,15 @@ const Textarea = styled(TextareaAutosize)`
   }
 `;
 
-var Avatar = styled.div`
+const CommentInfo = styled.div`
+  display: grid;
+  align-self: start;
+  justify-self: start;
+  font-size: 15px;
+  font-weight: 700;
+`;
+
+const AvatarWrapper = styled.div`
   position: absolute;
   display: grid;
   justify-self: flex-end;
@@ -162,25 +168,8 @@ var Avatar = styled.div`
   height: 4.5rem;
   border-radius: 50%;
   background: white;
-  right: 1vw;
-  top: -3vh;
-  & img {
-    align-self: center;
-    justify-self: center;
-    display: block;
-    width: 3.75rem;
-    height: 3.75rem;
-    -o-object-fit: cover;
-    object-fit: cover;
-    border-radius: 50%;
-  }
-`;
-const CommentInfo = styled.div`
-  display: grid;
-  align-self: start;
-  justify-self: start;
-  font-size: 15px;
-  font-weight: 700;
+  top: -2rem;
+  right: 1rem;
 `;
 export default ({
   files,
@@ -202,14 +191,14 @@ export default ({
       <ThumbnailWraper>
         <Thumbnail
           key={files[0].id}
-          src={`${process.env.PUBLIC_URL}/img/${files[0].url}`}
+          src={`http://localhost:4000/${files[0].url}`}
         />
       </ThumbnailWraper>
 
       <Contents>
-        <Avatar>
-          <img src={`${process.env.PUBLIC_URL}/img/${avatar}`} alt="" />
-        </Avatar>
+        <AvatarWrapper>
+          <Avatar avatar={avatar} />
+        </AvatarWrapper>
         <CoverLetter>
           <UserName>{userName}</UserName>
           <Title>{title}</Title>
@@ -238,7 +227,7 @@ export default ({
                   {comment.text}
                 </Comment>
               ))}
-              {selfComments.reverse().map(comment => (
+              {selfComments.map(comment => (
                 <Comment key={comment.id}>
                   <FatText text={comment.user.userName} />
                   {comment.text}

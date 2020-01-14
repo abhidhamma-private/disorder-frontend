@@ -8,37 +8,43 @@ import {
 } from 'react-router-dom';
 import Auth from '../Routes/Auth';
 import Feed from '../Routes/Feed';
-import Diary from '../Routes/Diary';
 import Alarm from '../Routes/Alarm';
-import Board from '../Routes/Board';
+import Story from '../Routes/Story';
 import Etc from '../Routes/Etc';
 import Me from '../Routes/Me';
-import Header from './Header';
-import Tab from './Tab';
+import Search from '../Routes/Search';
+import Diary from '../Routes/Diary';
+import Theme from '../Routes/Theme';
+import App from './App';
+
 const LoggedInRoutes = () => {
+  console.log('loggedin');
   return (
-    <>
-      <Router>
-        <Header />
-        <Tab />
-        <Route path={'/'} exact={true} component={Feed} />
-        <Route path={'/feed'} component={Feed} />
-        <Route path={'/diary'} component={Diary} />
-        <Route path={'/alarm'} component={Alarm} />
-        <Route path={'/board'} component={Board} />
-        <Route path={'/me'} component={Me} />
-        <Route path={'/etc'} component={Etc} />
-        <Redirect from={'*'} to={'/'} />
-      </Router>
-    </>
+    <Router>
+      <Route path={'/feed'} component={Feed} />
+      <Route path={'/search'} component={Search} />
+      <Route path={'/diary'} component={Diary} />
+      <Route path={'/alarm'} component={Alarm} />
+      <Route path={'/story'} component={Story} />
+      <Route path={'/me'} component={Me} />
+      <Route path={'/etc'} component={Etc} />
+      <Route path={'/auth'} component={Auth} />
+      <Route path={'/theme'} component={Theme} />
+      <Route path={'/app'} component={App} />
+      <Redirect from={'*'} to={'/feed'} />
+    </Router>
   );
 };
 
-const LoggedOutRoutes = () => (
-  <>
-    <Route exact path="/" component={Auth} />
-  </>
-);
+const LoggedOutRoutes = () => {
+  return (
+    <Router>
+      <Route path={'/auth'} component={Auth} />
+      <Route path={'/theme'} component={Theme} />
+      <Redirect from={'/'} to={'/auth'} />
+    </Router>
+  );
+};
 
 const AppRouter = ({ isLoggedIn }) => {
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AuthPresenter from './AuthPresenter';
 import useInput from '../../Hooks/useInput';
-import { useMutation } from 'react-apollo-hooks';
+import { useMutation } from '@apollo/react-hooks';
 import {
   LOG_IN,
   CREATE_ACCOUNT,
@@ -11,6 +11,7 @@ import {
 import { toast } from 'react-toastify';
 
 export default () => {
+  console.log('auth');
   const [action, setAction] = useState('signUp');
   const userName = useInput('');
   const secret = useInput('');
@@ -58,11 +59,13 @@ export default () => {
           const {
             data: { createAccount: token },
           } = await createAccountMutation();
-          toast.success('계정이 만들어졌어요!', token);
 
+          toast.success('계정이 만들어졌어요!');
           if (token !== '' && token !== undefined) {
-            localLogInMutation({ variables: { token } });
-            setTimeout(() => document.location.reload(), 2000);
+            setTimeout(() => {
+              localLogInMutation({ variables: { token } });
+            }, 2000);
+            setAction('theme');
           }
         } catch (e) {
           toast.error(e.message);

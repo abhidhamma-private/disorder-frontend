@@ -1,4 +1,13 @@
 @font-face {
+  font-family: 'KakaoB';
+  src: local('KakaoBold'), url('./KakaoBold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'KakaoL';
+  src: local('KakaoLight'), url('./KakaoLight.woff') format('woff');
+}
+@font-face {
   font-family: 'NanumB';
   src: local('NanumGothicCoding'),
     url('./NanumGothicCoding-Bold.ttf') format('truetype');
@@ -9,8 +18,31 @@
   src: local('NanumGothicCoding'),
     url('./NanumGothicCoding-Regular.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'NanumSB';
+  src: local('NanumSquareRoundOTFB'),
+    url('./NanumSquareRoundOTFB.otf') format('opentype');
+}
 
 @font-face {
-  font-family: 'LOGO';
+  font-family: 'NanumSR';
+  src: local('NanumSquareRoundOTFR'),
+    url('./NanumSquareRoundOTFR.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'NanumGB';
+  src: local('NanumBarunGothicBold'),
+    url('./NanumBarunGothicBold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'NanumGR';
+  src: local('NanumBarunGothic'),
+    url('./NanumBarunGothic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Brand';
   src: local('Klavika Bold'), url('./KlavikaBold.otf') format('opentype');
 }

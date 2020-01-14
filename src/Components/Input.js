@@ -6,8 +6,8 @@ const Container = styled.input`
   border: 0;
   border: ${props => props.theme.boxBorder};
   border-radius: ${props => props.theme.borderRadius};
-  background-color: ${props => props.theme.bgColor};
-  height: 35px;
+  background-color: ${props => props.theme.whiteColor};
+  height: 5vh;
   font-size: 12px;
   padding: 0px 15px;
 `;
@@ -17,12 +17,16 @@ const Input = ({
   required = true,
   value,
   onChange,
+  onKeyPress,
   type = 'text',
+  className,
 }) => (
   <Container
+    className={className}
     placeholder={placeholder}
     required={required}
     value={value}
+    onKeyPress={onKeyPress}
     onChange={onChange}
     type={type}
   />

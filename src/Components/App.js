@@ -1,14 +1,16 @@
 import React from 'react';
 import { gql } from 'apollo-boost';
 import styled, { ThemeProvider } from 'styled-components';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import GlobalStyles from '../Styles/GlobalStyles';
 import Theme from '../Styles/Theme';
 import Router from './Router';
+import Loader from './Loader';
+import { READ_MYDATA } from '../sharedQueries';
 
-const QUERY = gql`
+const IS_LOGGEDIN = gql`
   {
     isLoggedIn @client
   }
@@ -16,21 +18,32 @@ const QUERY = gql`
 
 const DefaultStyle = styled.div`
   display: grid;
-  margin: 0 auto;
   max-width: 935px;
-  grid-template-rows: minmax(7vh, 1fr) minmax(7vh, 1fr);
+  font-family: 'KakaoL';
+  font-weight: 600;
 `;
 export default () => {
-  let {
-    data: { isLoggedIn },
-  } = useQuery(QUERY);
+  console.log('app');
+  const { loading: myDataLoading, data: myData } = useQuery(READ_MYDATA);
+  const { loading: loginCheckLoading, data } = useQuery(IS_LOGGEDIN);
+
   return (
-    <ThemeProvider theme={Theme}>
-      <GlobalStyles />
-      <DefaultStyle>
-        <Router isLoggedIn={isLoggedIn} />
-      </DefaultStyle>
-      <ToastContainer position={toast.POSITION.BOTTOM_LEFT} />
-    </ThemeProvider>
+    <>
+      {loginCheckLoading && myDataLoading && <Loader />}
+      {!(loginCheckLoading && myDataLoading) && data && (
+        <ThemeProvider
+          theme={
+            myData && data.isLoggedIn
+              ? { ...Theme, activeColor: myData.readMyData.avatar }
+              : Theme
+          }>
+          <GlobalStyles />
+          <DefaultStyle>
+            <Router isLoggedIn={data.isLoggedIn} />
+          </DefaultStyle>
+          <ToastContainer position={toast.POSITION.BOTTOM_LEFT} />
+        </ThemeProvider>
+      )}
+    </>
   );
 };

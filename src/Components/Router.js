@@ -37,16 +37,18 @@ const LoggedInRoutes = () => {
 };
 
 const LoggedOutRoutes = () => {
+  console.log('loggedOut');
   return (
     <Router>
       <Route path={'/auth'} component={Auth} />
       <Route path={'/theme'} component={Theme} />
-      <Redirect from={'/'} to={'/auth'} />
+      <Redirect from={'*'} to={'/auth'} />
     </Router>
   );
 };
 
 const AppRouter = ({ isLoggedIn }) => {
+  console.log('router');
   return (
     <Router>
       <Switch>{isLoggedIn ? <LoggedInRoutes /> : <LoggedOutRoutes />}</Switch>

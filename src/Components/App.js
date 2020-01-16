@@ -33,8 +33,10 @@ export default () => {
       {!(loginCheckLoading && myDataLoading) && data && (
         <ThemeProvider
           theme={
-            myData && data.isLoggedIn
-              ? { ...Theme, activeColor: myData.readMyData.avatar }
+            myData && myData.readMyData && myData.readMyData.avatar
+              ? myData.readMyData.avatar.slice(0, 1) === '#' && data.isLoggedIn
+                ? { ...Theme, activeColor: myData.readMyData.avatar }
+                : Theme
               : Theme
           }>
           <GlobalStyles />

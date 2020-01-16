@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Input from '../../Components/Input';
+
 export const Wrapper = styled.div`
   display: grid;
   background: white;

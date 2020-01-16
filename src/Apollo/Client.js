@@ -9,8 +9,20 @@ import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 import { resolvers } from './LocalState';
 import { SubscriptionClient } from 'subscriptions-transport-ws';
+
+const config = {
+  pd: {
+    uri: 'https://boongyee.com',
+    ws: 'ws://boongyee.com/socket',
+  },
+  dev: {
+    uri: 'http://localhost:4000',
+    ws: 'ws://localhost:4000/socket',
+  },
+};
+
 const httpLink = new createHttpLink({
-  uri: 'http://localhost:4000/',
+  uri: config.pd.uri,
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -22,7 +34,7 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
-const sbclient = new SubscriptionClient('ws://localhost:4000/socket', {
+const sbclient = new SubscriptionClient(config.pd.ws, {
   reconnect: true,
 });
 const wsLink = new WebSocketLink(sbclient);

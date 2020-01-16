@@ -54,21 +54,26 @@ const PostList = styled.div`
 `;
 
 export default () => {
+  console.log('feed');
   let history = useHistory();
   if (history.action === 'PUSH') {
     // history.push('/feed');
   }
   const { data: readMyData, loading: myDataLoading } = useQuery(READ_MYDATA);
-  const { data, loading } = useQuery(FEED_QUERY);
+  const { data, error, loading } = useQuery(FEED_QUERY);
 
   if (loading && myDataLoading) {
     return <Loader />;
   }
+  console.log(data);
+  console.log(error);
   return (
     <>
-      {typeof readMyData.readMyData.avatar === 'undefined'
-        ? history.push('/theme')
-        : ''}
+      {readMyData &&
+        readMyData.readMyData &&
+        (typeof readMyData.readMyData.avatar === 'undefined'
+          ? history.push('/theme')
+          : '')}
       <Wrapper>
         <Header />
         <Tab />

@@ -13,7 +13,7 @@ import { SubscriptionClient } from 'subscriptions-transport-ws';
 const config = {
   pd: {
     uri: 'https://boongyee.com',
-    ws: 'ws://boongyee.com/socket',
+    ws: 'https://boongyee.com/socket',
   },
   dev: {
     uri: 'http://localhost:4000',

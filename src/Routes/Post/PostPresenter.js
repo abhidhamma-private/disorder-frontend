@@ -191,7 +191,7 @@ export default ({
       <ThumbnailWraper>
         <Thumbnail
           key={files[0].id}
-          src={`http://localhost:4000/${files[0].url}`}
+          src={`https://boongyee.com/${files[0].url}`}
         />
       </ThumbnailWraper>
 

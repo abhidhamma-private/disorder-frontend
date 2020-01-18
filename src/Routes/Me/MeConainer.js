@@ -4,7 +4,7 @@ import { READ_MYDIARY } from './MeQueries';
 import { useQuery } from '@apollo/react-hooks';
 import Loader from 'Components/Loader';
 
-export default React.memo(() => {
+export default () => {
   const { data: myDiaryData, loading: myDiaryLoading } = useQuery(READ_MYDIARY);
   return (
     <>
@@ -14,4 +14,4 @@ export default React.memo(() => {
       )}
     </>
   );
-});
+};

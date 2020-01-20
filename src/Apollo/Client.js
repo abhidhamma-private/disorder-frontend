@@ -24,7 +24,7 @@ const config = {
     ws: 'ws://192.168.0.79:4000/socket',
   },
 };
-const currentConfig = config.dev;
+const currentConfig = config.pd;
 
 const httpLink = new createHttpLink({
   uri: currentConfig.uri,

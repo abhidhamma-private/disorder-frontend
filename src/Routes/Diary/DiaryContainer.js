@@ -9,6 +9,7 @@ import {
 } from './DiaryQuries';
 import Loader from '../../Components/Loader';
 import { useHistory } from 'react-router-dom';
+import { READ_MYDIARY } from 'Routes/Me/MeQueries';
 export default () => {
   console.log('DiaryContainer');
   //state
@@ -31,7 +32,9 @@ export default () => {
   );
 
   //mutation
-  const [createMyDiary] = useMutation(CREATE_MYDIARY);
+  const [createMyDiary] = useMutation(CREATE_MYDIARY, {
+    refetchQueries: () => [{ query: READ_MYDIARY }],
+  });
   const [updateMyQuestion] = useMutation(UPDATE_MYQUESTION);
 
   //function

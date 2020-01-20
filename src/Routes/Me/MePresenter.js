@@ -93,6 +93,10 @@ const Score = styled.div`
   display: grid;
   grid-area: score;
 `;
+const Empty = styled.div`
+  display: grid;
+`;
+
 export default myDiaries => {
   const diariesArr = myDiaries.myDiaries;
   return (
@@ -101,27 +105,31 @@ export default myDiaries => {
       <Title>오늘의 기록</Title>
       <TimelineWrapper>
         <Timeline>
-          {diariesArr.map(diary => (
-            <TimelineItem key={diary.id}>
-              <TimelineTail />
-              <TimlineCircle />
-              <TimelineItemsWrapper>
-                <Type>{diary.question.type}</Type>
-                <Good>{diary.good ? '행동' : '생각'}</Good>
-                <Content>
-                  {/* prettier-ignore */}
-                  <pre>
+          {diariesArr ? (
+            diariesArr.map(diary => (
+              <TimelineItem key={diary.id}>
+                <TimelineTail />
+                <TimlineCircle />
+                <TimelineItemsWrapper>
+                  <Type>{diary.question.type}</Type>
+                  <Good>{diary.good ? '행동' : '생각'}</Good>
+                  <Content>
+                    {/* prettier-ignore */}
+                    <pre>
 {
 `${diary.content}`
 }
                   </pre>
-                </Content>
-                <Score>{`${diary.good ? '긍정적' : '부정적'}느낌 ${
-                  diary.score
-                }`}</Score>
-              </TimelineItemsWrapper>
-            </TimelineItem>
-          ))}
+                  </Content>
+                  <Score>{`${diary.good ? '긍정적' : '부정적'}느낌 ${
+                    diary.score
+                  }`}</Score>
+                </TimelineItemsWrapper>
+              </TimelineItem>
+            ))
+          ) : (
+            <Empty />
+          )}
         </Timeline>
       </TimelineWrapper>
     </Wrapper>

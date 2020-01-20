@@ -7,27 +7,25 @@ const Container = styled.button`
   height: 100%;
   border: 0;
   border-radius: ${props => props.theme.borderRadius};
-  color: ${props => props.theme.whiteColor};
+  color: ${props => props.theme.buttonColor};
   font-weight: 600;
   background-color: transparent;
-  border: 1px solid ${props => props.theme.whiteColor};
+  border: 1.5px solid ${props => props.theme.buttonColor};
   text-align: center;
-  padding: 7px 0px;
   font-size: 1rem;
-  font-weight: 500;
 `;
 const Wrapper = styled.div`
   width: 40vw;
   height: 5vh;
 `;
-const OutLineButton = ({ text, onClick }) => (
+const BlackOutLineButton = ({ text, onClick }) => (
   <Wrapper>
     <Container onClick={onClick}>{text}</Container>
   </Wrapper>
 );
 
-OutLineButton.propTypes = {
+BlackOutLineButton.propTypes = {
   text: PropTypes.string.isRequired,
 };
 
-export default OutLineButton;
+export default BlackOutLineButton;

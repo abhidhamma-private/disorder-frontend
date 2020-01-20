@@ -60,7 +60,7 @@ export default () => {
     // history.push('/feed');
   }
   const { data: readMyData, loading: myDataLoading } = useQuery(READ_MYDATA);
-  const { data, error, loading } = useQuery(FEED_QUERY);
+  const { data, error, loading } = useQuery(FEED_QUERY, { pollInterval: 5000 });
 
   if (loading && myDataLoading) {
     return <Loader />;

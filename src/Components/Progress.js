@@ -13,7 +13,7 @@ const Item = styled.div`
   height: 100%;
   display: grid;
   color: white;
-  background: #636469;
+  background: ${props => props.theme.dimgreyColor};
   border: 1px solid white;
 `;
 const Text = styled.div`
@@ -30,10 +30,10 @@ export default ({ background, diary, setDiary }) => {
           key={element}
           style={
             diary.score === undefined
-              ? { background: '#636469' }
+              ? { background: '#626367' }
               : element <= diary.score
               ? { background: background }
-              : { background: '#636469' }
+              : { background: '#626367' }
           }
           onClick={() => setDiary(diary => ({ ...diary, score: element }))}>
           <Text>{element}</Text>
@@ -59,7 +59,7 @@ export default ({ background, diary, setDiary }) => {
 //   height: 100%;
 //   display: grid;
 //   color: white;
-//   background: #636469;
+//   background: #626367;
 //   border: 1px solid white;
 // `;
 // const Text = styled.div`
@@ -77,10 +77,10 @@ export default ({ background, diary, setDiary }) => {
 //           key={element}
 //           style={
 //             state.diary.score === undefined
-//               ? { background: '#636469' }
+//               ? { background: '#626367' }
 //               : element <= state.diary.score
 //               ? { background: background }
-//               : { background: '#636469' }
+//               : { background: '#626367' }
 //           }
 //           onClick={() =>
 //             dispatch({

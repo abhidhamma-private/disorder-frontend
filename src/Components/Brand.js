@@ -6,7 +6,7 @@ const Brand = styled.div`
   cursor: pointer;
   font-family: 'Brand';
   font-size: 8vw;
-  color: dimgray;
+  color: ${props => props.theme.dimgreyColor};
   font-weight: 800;
   text-align: end;
 `;

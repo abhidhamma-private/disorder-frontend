@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import Avatar from '../Avatar';
 import Input from '../Input';
-import { Survey } from '../Icons';
+import { Survey, Camera } from '../Icons';
 
 const Wrapper = styled.form`
   display: grid;
   justify-items: center;
   align-items: center;
-  grid-template-columns: 2fr 8fr 2fr;
+  grid-template-columns: 8vh 5fr 1fr 1fr;
   background: white;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
 `;
@@ -40,18 +40,26 @@ const SurveyWrapper = styled.label`
 const UploadInput = styled.input`
   display: none;
 `;
-export default ({ upload, onWriteSubmit, think }) => {
+export default ({
+  upload,
+  onWriteSubmit,
+  think,
+  myData: { avatar, userName },
+}) => {
   return (
     <Wrapper onSubmit={onWriteSubmit}>
-      <Avatar outSize={'1'} inSize={'2.4'} avatar={'avatar.png'} />
+      <Avatar color={avatar} text={userName} />
 
       <SearchInput
-        placeholder="무슨 생각을 하고 계신가요?"
+        placeholder="무슨 생각이 떠올랐나요?"
         value={think.value}
         onChange={think.onChange}
       />
       <SurveyWrapper>
         <Survey />
+      </SurveyWrapper>
+      <SurveyWrapper>
+        <Camera />
         <UploadInput type="file" onChange={upload} multiple />
       </SurveyWrapper>
     </Wrapper>

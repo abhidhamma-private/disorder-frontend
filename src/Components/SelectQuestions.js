@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import OutLineButton from './OutLineButton';
+import BlackOutLineButton from './BlackOutLineButton';
 import { toast } from 'react-toastify';
 import Text from '../Components/Text';
 
@@ -81,7 +81,7 @@ const OutLineButtonWrapper = styled.div`
   justify-items: center;
   width: 100%;
   height: 100%;
-  background: #aeb4bb;
+  background: white;
 `;
 export default ({ allQuestion, updateQuestion, setAction, myQuestion }) => {
   console.log('SelectQuestions');
@@ -93,7 +93,7 @@ export default ({ allQuestion, updateQuestion, setAction, myQuestion }) => {
           <StartSectionDescription>
             <pre>
               {`어떻게 행동하고 있는지를 객관적으로 확인하는것을 통해 
-자신의 현재상황을 확인하는데 도움을 줄 수 있어요^-^//
+자신의 현재상황을 확인하는데 도움을 줄 수 있어요
 `}
             </pre>
           </StartSectionDescription>
@@ -106,7 +106,7 @@ export default ({ allQuestion, updateQuestion, setAction, myQuestion }) => {
                     style={
                       myQuestion.filter(element => element.id === behavior.id)
                         .length
-                        ? { background: '#636469', color: 'white' }
+                        ? { background: '#626367', color: 'white' }
                         : { background: 'white', color: '#4b4c4f' }
                     }
                     key={behavior.id}
@@ -123,7 +123,7 @@ export default ({ allQuestion, updateQuestion, setAction, myQuestion }) => {
           <StartSectionDescription>
             <pre>
               {`자신의 반복되는 심리적 패턴을 확인하는것을 통해 
-정서적 건강에 도움을 줄 수 있어요^-^//
+정서적 건강에 도움을 줄 수 있어요
 `}
             </pre>
           </StartSectionDescription>
@@ -135,7 +135,7 @@ export default ({ allQuestion, updateQuestion, setAction, myQuestion }) => {
                   style={
                     myQuestion.filter(element => element.id === emotion.id)
                       .length
-                      ? { background: '#636469', color: 'white' }
+                      ? { background: '#626367', color: 'white' }
                       : { background: 'white', color: '#4b4c4f' }
                   }
                   key={emotion.id}
@@ -158,7 +158,7 @@ export default ({ allQuestion, updateQuestion, setAction, myQuestion }) => {
           </StartSectionDescription>
         </WhiteBox>
         <OutLineButtonWrapper>
-          <OutLineButton
+          <BlackOutLineButton
             text={'계속하기'}
             onClick={() =>
               setAction(() => {
@@ -290,7 +290,7 @@ export default ({ allQuestion, updateQuestion, setAction, myQuestion }) => {
 //                       state.myQuestion.filter(
 //                         element => element.id === behavior.id
 //                       ).length
-//                         ? { background: '#636469', color: 'white' }
+//                         ? { background: '#626367', color: 'white' }
 //                         : { background: 'white', color: '#4b4c4f' }
 //                     }
 //                     key={behavior.id}
@@ -326,7 +326,7 @@ export default ({ allQuestion, updateQuestion, setAction, myQuestion }) => {
 //                     state.myQuestion.filter(
 //                       element => element.id === emotion.id
 //                     ).length
-//                       ? { background: '#636469', color: 'white' }
+//                       ? { background: '#626367', color: 'white' }
 //                       : { background: 'white', color: '#4b4c4f' }
 //                   }
 //                   key={emotion.id}

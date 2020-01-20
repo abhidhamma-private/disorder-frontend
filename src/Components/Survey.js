@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import TextareaAutosize from 'react-autosize-textarea/lib';
-import OutLineButton from './OutLineButton';
-import { BackArrow, Restart } from '../Components/Icons';
+import WhiteOutLineButton from './WhiteOutLineButton';
+import BlackOutLineButton from './BlackOutLineButton';
+import { BlackBackArrow, BlackRestart } from '../Components/Icons';
 import Progress from './Progress';
 const Survey = styled.div`
   display: grid;
-  grid-template-rows: 8vh 8vh 10vh 30vh 8vh 10vh 10vh;
+  grid-template-rows: 8vh 8vh 10vh 30vh 8vh 10vh 19vh;
 `;
 
 const Question = styled.div`
@@ -47,10 +48,11 @@ const Answer = styled(TextareaAutosize)`
 
 const OutLineButtonWrapper = styled.div`
   display: grid;
-  align-self: center;
-  justify-self: center;
-  width: 40vw;
-  background: '#636469';
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  height: 100%;
+  background: white;
 `;
 const Text = styled.div`
   display: grid;
@@ -144,7 +146,7 @@ export default ({
             setSurveyCount(surveyCount === 0 ? 0 : surveyCount - 1);
             setAction(surveyCount === 0 ? 'Description' : 'Survey');
           }}>
-          <BackArrow />
+          <BlackBackArrow />
           <Text>이전으로</Text>
         </BackArrowWrapper>
         <Counter>
@@ -155,7 +157,7 @@ export default ({
             setSurveyCount(0);
             setAction('Survey');
           }}>
-          <Restart />
+          <BlackRestart />
           <Text>처음으로</Text>
         </RestartWrapper>
       </SurveyHandlerWrapper>
@@ -179,16 +181,16 @@ export default ({
             <Text>당신은 지금, 이 일기를 쓰면서 어떤 감정이 들었나요?</Text>
           </Question>
           <Evaluation>
-            <OutLineButton
+            <WhiteOutLineButton
               text={'불편한 감정'}
               onClick={() =>
                 setDiary(diary => ({ ...diary, good: false }))
-              }></OutLineButton>
-            <OutLineButton
+              }></WhiteOutLineButton>
+            <WhiteOutLineButton
               text={'좋은 감정'}
               onClick={() =>
                 setDiary(diary => ({ ...diary, good: true }))
-              }></OutLineButton>
+              }></WhiteOutLineButton>
           </Evaluation>
         </>
       ) : diary.good === true ? (
@@ -214,7 +216,7 @@ export default ({
       )}
 
       <OutLineButtonWrapper>
-        <OutLineButton text={'계속하기'} onClick={createDiary} />
+        <BlackOutLineButton text={'계속하기'} onClick={createDiary} />
       </OutLineButtonWrapper>
     </Survey>
   );
@@ -273,7 +275,7 @@ export default ({
 //   align-self: center;
 //   justify-self: center;
 //   width: 40vw;
-//   background: '#636469';
+//   background: '#626367';
 // `;
 // const Text = styled.div`
 //   display: grid;

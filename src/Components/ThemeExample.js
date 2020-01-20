@@ -14,7 +14,7 @@ import {
   DateText,
   DateTail,
 } from '../Routes/Story/StoryCSS';
-import { BackArrow } from './Icons';
+import { WhiteBackArrow } from './Icons';
 import { NavLink } from 'react-router-dom';
 import { Icon } from 'antd';
 import { ThemeContext, ThemeAction } from 'Routes/Theme/ThemeContext';
@@ -207,7 +207,7 @@ export default () => {
       <ThemeHandlerWrapper style={{ background: customColor }}>
         <BackArrowWrapper
           onClick={() => dispatch({ type: ThemeAction.GO_BACK })}>
-          <BackArrow />
+          <WhiteBackArrow />
           <Text>다시고르기</Text>
         </BackArrowWrapper>
         <Title>
@@ -220,7 +220,7 @@ export default () => {
           }}>
           <Text>이걸로하기</Text>
           <SvgWrapper>
-            <BackArrow />
+            <WhiteBackArrow />
           </SvgWrapper>
         </ArrowWrapper>
       </ThemeHandlerWrapper>

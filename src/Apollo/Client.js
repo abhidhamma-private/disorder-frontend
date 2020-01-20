@@ -19,10 +19,15 @@ const config = {
     uri: 'http://localhost:4000',
     ws: 'ws://localhost:4000/socket',
   },
+  local: {
+    uri: 'http://192.168.0.79:4000',
+    ws: 'ws://192.168.0.79:4000/socket',
+  },
 };
+const currentConfig = config.dev;
 
 const httpLink = new createHttpLink({
-  uri: config.pd.uri,
+  uri: currentConfig.uri,
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -34,7 +39,7 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
-const sbclient = new SubscriptionClient(config.pd.ws, {
+const sbclient = new SubscriptionClient(currentConfig.ws, {
   reconnect: true,
 });
 const wsLink = new WebSocketLink(sbclient);

@@ -3,8 +3,10 @@ import { FEED_QUERY, UPLOAD } from './WriteQuries';
 import useInput from '../../Hooks/useInput';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import WritePresenter from './WritePresenter';
+import { READ_MYDATA } from '../../sharedQueries';
+import Loader from 'Components/Loader';
 
 export default () => {
   const [fileUrl, setFileUrl] = useState('');
@@ -12,8 +14,9 @@ export default () => {
   const [postUploadMutation] = useMutation(UPLOAD, {
     refetchQueries: () => [{ query: FEED_QUERY }],
   });
+  const { data, loading } = useQuery(READ_MYDATA);
 
-  async function upload(event) {
+  const upload = async event => {
     const file = event.target.files[0];
 
     const formData = new FormData();
@@ -35,7 +38,7 @@ export default () => {
       console.log('upload fail : ', e);
       setFileUrl('upLoadFail');
     }
-  }
+  };
 
   const onWriteSubmit = async event => {
     event.preventDefault();
@@ -60,10 +63,17 @@ export default () => {
   };
 
   return (
-    <WritePresenter
-      upload={upload}
-      onWriteSubmit={onWriteSubmit}
-      think={think}
-    />
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <WritePresenter
+          myData={data.readMyData}
+          upload={upload}
+          onWriteSubmit={onWriteSubmit}
+          think={think}
+        />
+      )}
+    </>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dance, BackArrow, Restart } from '../../Components/Icons';
+import { Dance, WhiteBackArrow, WhiteRestart } from '../../Components/Icons';
 import moment from 'moment';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
@@ -219,14 +219,14 @@ export default ({
     <Wrapper>
       <ChatHandlerWrapper>
         <BackArrowWrapper onClick={() => history.push('/feed')}>
-          <BackArrow color={'white'} />
+          <WhiteBackArrow color={'white'} />
           <Text>돌아가기</Text>
         </BackArrowWrapper>
         <Title>
           <TitleText>이야기</TitleText>
         </Title>
         <RestartWrapper onClick={() => history.push('/feed')}>
-          <Restart color={'white'} />
+          <WhiteRestart color={'white'} />
           <Text>처음으로</Text>
         </RestartWrapper>
       </ChatHandlerWrapper>

@@ -5,7 +5,7 @@ import Loader from '../../Components/Loader';
 import UserCard from '../../Components/UserCard';
 import SquarePost from '../../Components/SquarePost';
 import Input from '../../Components/Input';
-import { BackArrow } from '../../Components/Icons';
+import { BlackBackArrow } from '../../Components/Icons';
 import useInput from '../../Hooks/useInput';
 import { useHistory } from 'react-router-dom';
 const Wrapper = styled.div`
@@ -29,7 +29,6 @@ const BackArrowWrapper = styled.div`
   display: grid;
   justify-self: center;
   align-self: center;
-  padding-right: 0.5rem;
 `;
 
 const SearchInput = styled(Input)`
@@ -105,7 +104,7 @@ const SearchPresenter = ({ searchTerm, loading, data }) => {
         <form onSubmit={onSearchSubmit}>
           <SearchInputWrapper>
             <BackArrowWrapper onClick={() => history.goBack()}>
-              <BackArrow />
+              <BlackBackArrow />
             </BackArrowWrapper>
             <SearchInput
               value={search.value}
@@ -128,7 +127,7 @@ const SearchPresenter = ({ searchTerm, loading, data }) => {
         <form onSubmit={onSearchSubmit}>
           <SearchInputWrapper>
             <BackArrowWrapper onClick={() => history.goBack()}>
-              <BackArrow />
+              <BlackBackArrow />
             </BackArrowWrapper>
             <SearchInput
               value={search.value}

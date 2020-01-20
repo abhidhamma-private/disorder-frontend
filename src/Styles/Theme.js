@@ -4,7 +4,7 @@ export default {
   // blackColor: '#262626',
   fontColor: '#4B4C4F',
   darkGreyColor: '#999',
-  lightGreyColor: '#c7c7c7',
+  lightGreyColor: '#AEB4BB',
   redColor: '#ED4956',
   blueColor: '#3B5998',
   darkBlueColor: '#003569',
@@ -21,9 +21,12 @@ export default {
   //primaryColor: '#3B5998',
   // primaryColor: '#65676B',
   primaryColorInverted: '#ff9d76',
-  activeColor: '#3B5998', //진한파랑
-  dimgreyColor: '#636469',
+  //activeColor: '#3B5998', //진한파랑
+  activeColor: '#636469',
+  buttonColor: '#626367',
 
+  dimgreyColor: '#626367',
+  //dimgreyColor: '#677B8C',
   //search 글쓰기
   //lightGreyColor: '#E5E6EB',
 

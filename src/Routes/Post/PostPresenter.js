@@ -197,7 +197,7 @@ export default ({
 
       <Contents>
         <AvatarWrapper>
-          <Avatar avatar={avatar} />
+          <Avatar color={avatar} text={userName} />
         </AvatarWrapper>
         <CoverLetter>
           <UserName>{userName}</UserName>
@@ -235,7 +235,7 @@ export default ({
               ))}
             </Comments>
           ) : (
-            <CommentInfo>최근댓글이 없어요 ^-^//</CommentInfo>
+            <CommentInfo>최근댓글이 없어요</CommentInfo>
           )}
           <Textarea
             onKeyPress={onKeyPress}

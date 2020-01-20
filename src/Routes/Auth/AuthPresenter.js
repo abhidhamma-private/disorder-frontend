@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Input from '../../Components/Input';
-import OutLineButton from '../../Components/OutLineButton';
+import BlackOutLineButton from '../../Components/BlackOutLineButton';
 import Description from '../../Components/MainDescription';
 import Brand from '../../Components/Brand';
 import mainImage from '../../assets/image/3.jpeg';
@@ -88,19 +88,19 @@ export default ({ action, userName, setAction, onSubmit, secret }) => {
           {action === 'logIn' && (
             <form onSubmit={onSubmit}>
               <Input placeholder={'닉네임'} {...userName} />
-              <OutLineButton text={'로그인'} />
+              <BlackOutLineButton text={'로그인'} />
             </form>
           )}
           {action === 'signUp' && (
             <form onSubmit={onSubmit}>
               <Input placeholder={'닉네임'} {...userName} />
-              <OutLineButton text={'입장하기'} />
+              <BlackOutLineButton text={'입장하기'} />
             </form>
           )}
           {action === 'confirm' && (
             <form onSubmit={onSubmit}>
               <Input placeholder="키를 입력해주세요" required {...secret} />
-              <OutLineButton text={'확인'} />
+              <BlackOutLineButton text={'확인'} />
             </form>
           )}
         </Form>

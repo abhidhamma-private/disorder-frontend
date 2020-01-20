@@ -36,12 +36,12 @@ export default () => {
     <Wrapper>
       <Tab />
       <Title>알람</Title>
-      <Alarm>아침일지를 쓸 시간이에요^-^//</Alarm>
-      <Alarm>점심일지를 쓸 시간이에요^-^//</Alarm>
-      <Alarm>저녁일지를 쓸 시간이에요^-^//</Alarm>
-      <Alarm>퇴근후일지를 쓸 시간이에요^-^//</Alarm>
-      <Alarm>자기전일지를 쓸 시간이에요^-^//</Alarm>
-      <Alarm>아침일지를 쓸 시간이에요^-^//</Alarm>
+      <Alarm>아침일지를 쓸 시간이에요</Alarm>
+      <Alarm>점심일지를 쓸 시간이에요</Alarm>
+      <Alarm>저녁일지를 쓸 시간이에요</Alarm>
+      <Alarm>퇴근후일지를 쓸 시간이에요</Alarm>
+      <Alarm>자기전일지를 쓸 시간이에요</Alarm>
+      <Alarm>아침일지를 쓸 시간이에요</Alarm>
       <Life />
     </Wrapper>
   );

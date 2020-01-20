@@ -1,24 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Avatar = styled.img`
+export const Avatar = styled.div`
+  display: grid;
   align-self: center;
   justify-self: center;
-  display: grid;
-  width: 3.75rem;
-  height: 3.75rem;
-  -o-object-fit: cover;
-  object-fit: cover;
-  border-radius: 50%;
+  height: 85%;
+  width: 85%;
+  border-radius: 100px;
+  background: ${props => props.theme.dimgreyColor};
 `;
 
-export default ({ avatar, top, left, right, bottom, outSize, inSize }) => {
-  const imgSize = `${inSize}rem`;
+export const AvatarText = styled.div`
+  display: grid;
+  align-self: center;
+  justify-self: center;
+  font-size: 1rem;
+  color: white;
+`;
+
+export default ({ color, text }) => {
   return (
-    <Avatar
-      style={{ width: imgSize, height: imgSize }}
-      src={`${process.env.PUBLIC_URL}/img/avatar.png`}
-      alt=""
-    />
+    <Avatar style={{ background: color }}>
+      <AvatarText>{text}</AvatarText>
+    </Avatar>
   );
 };
